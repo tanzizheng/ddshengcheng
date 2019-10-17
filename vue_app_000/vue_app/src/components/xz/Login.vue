@@ -1,7 +1,7 @@
 <!--Login.vue 用户登录组件-->
 <template>
   <div>
-    <h1>Login.vue</h1>
+    <h1>欢迎登陆</h1>
     <!--用户名输入框-->
     <mt-field label="用户名" placeholder="请输入用户名" v-model="uname"></mt-field>
     <!--用户密码输入框-->
