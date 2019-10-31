@@ -25,7 +25,7 @@ server.listen(8080);
 //     http://localhost:5050
 //5.2:每请求是否验证true
 server.use(cors({
-  origin:["http://127.0.0.1:5050","http://localhost:5050"],
+  origin:["http://127.0.0.1:9088","http://localhost:9088"],
   credentials:true
 }))
 //6:配置session
