@@ -14,8 +14,8 @@
 export default {
    data(){
      return {
-      uname:"", //用户名
-      upwd:""   //密码
+      uname:"tom", //用户名
+      upwd:123   //密码
     }
     },
    methods:{

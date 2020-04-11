@@ -1,5 +1,5 @@
 # vue_app
-
+#--port 9088 --host 127.0.0.1
 ## Project setup
 ```
 npm install

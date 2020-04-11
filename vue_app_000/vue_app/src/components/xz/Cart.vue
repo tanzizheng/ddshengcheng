@@ -20,10 +20,12 @@
             <mt-button @click="deleteItems">删除选中商品</mt-button>
             <!-- <mt-button>清空购物车</mt-button> -->
         </div>
+
     </div>
 </template>
 <script>
 export default {
+    
     data(){
         return{
             list:[]//当前登录用户购物车列表
@@ -156,6 +158,6 @@ export default {
     margin-left: 25px;
 }
 .price{
-    margin-left: 25px;
+    margin-left: 5px;
 }
 </style>

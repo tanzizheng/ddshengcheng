@@ -4,7 +4,7 @@
         <!-- 此div表示一个商品 -->
         <div class="goods-item" v-for="(item,index) of list
         " :key="index" >
-            <img :src="'http://127.0.0.1:8080/'+item.img_url" alt="">
+            <img :src="axios.defaults.baseURL+item.img_url" alt="">
             <!-- 名称 -->
             <h5>{{item.lname}}</h5>
             <!-- 价格 -->
@@ -15,7 +15,7 @@
             :data-price="item.price" :data-lname="item.lname">加入购物车</mt-button>
         </div>
         <mt-button size="large" @click="loadMore">加载更多</mt-button>
-        <mt-button @click="jmpCart">查看购物车</mt-button>
+        <mt-button @click="jmpCart" size="large">查看购物车</mt-button>
     </div>
 </template>
 <script>

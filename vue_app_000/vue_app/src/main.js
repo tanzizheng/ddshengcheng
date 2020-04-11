@@ -14,8 +14,9 @@ Vue.use(MintUI)
 import axios from "axios"
 //1.6:配置请求时保存session信息 
 axios.defaults.withCredentials=true
-//1.7:配置请求基础路径
-axios.defaults.baseURL="http://127.0.0.1:8080/"
+//1.7:配置请求基础路径(请求后端的接口)
+// axios.defaults.baseURL="http://103.45.98.117:8080/"
+axios.defaults.baseURL="http://localhost:8010/"
 //注意:地址栏请输必须!!!!!!!!!
 //http://127.0.0.1:8080/!!!!
 //如果地址  http://localhost 报错

@@ -10,12 +10,17 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    
-      // {path:'/Login',component:Login},
-      {path:'/',component:Login},
+    // {
+    //   path: '/',
+    //   name: 'login',
+    //   component: login
+    // },
+
     // {path:'/Login',component:Login},
-    {path:'/Product',component:Product},
-    {path:'/Cart',component:Cart},
+    { path: '/', component: Login },
+    // {path:'/Login',component:Login},
+    { path: '/Product', component: Product },
+    { path: '/Cart', component: Cart },
     // {
     //   path: '/about',
     //   name: 'about',
