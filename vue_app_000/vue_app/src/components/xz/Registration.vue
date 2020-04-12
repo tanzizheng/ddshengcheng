@@ -1,8 +1,8 @@
-<!--Login.vue 用户登录组件-->
+<!--Login.vue 用户注册组件-->
 <template>
 	<div class="login">
 		<div class="login_title">
-			<span>用户登录</span>
+			<span>用户注册</span>
 		</div>
 		<div class="login_fields">
 			<!-- 用户名 -->
@@ -35,12 +35,12 @@
 			</div>
 			<!-- 登录按钮 -->
 			<div class="login_fields__submit">
-				<input type="button" value="登录" @click="login">
+				<input type="button" value="注册" @click="login">
 			</div>
 		</div>
 		<div class="disclaimer">
 			<p>
-				欢迎登陆嘟嘟商城
+				欢迎注册嘟嘟商城
 			</p>
 		</div>
 	</div>
@@ -58,6 +58,7 @@
 	export default {
 		data() {
 			return {
+				show:false,
 				opacity1: "opacity:0",
 				opacity2: "opacity:0",
 				opacity: "opacity:0",
@@ -127,29 +128,26 @@
 				let num = this.show_num.join("");
 				if (val == num) {
 					//5: 发送ajax axios
-					var url = "login";
+					var url = "reg";
 					var obj = {
 						uname: u,
 						upwd: p
 					};
-					this.axios.get(url, {
-							params: obj
-						}) //parames代表请求的参数
+					this.axios.post(url,obj) //
 						.then(res => {
-							console.log(res);
-							//6: 接收服务器返回数据
-							//6: 回调函数:接收服务器返回数据
-							var code = res.data.code;
-							if (code == -1) {
-								//7: 失败 提示
-								this.$messagebox("消息", "用户名或密码有误");
-							} else {
-								//8: 成功 跳转
-								this.$router.push("/product")
+							// console.log(res.data.code)
+							if(res.data.code){
+								this.$messagebox("温馨提示", "您已成功注册");
+								this.uname=''
+							  this.upwd=''
+								// 	//8: 成功 跳转
+								// this.$router.push({path:`/log/login`})
+							}else{
+									this.$messagebox("温馨提示", "注册失败");
 							}
 						})
 				} else {
-					this.$messagebox("消息", "验证码有误,请从新输入");
+					this.$messagebox("消息", "验证码有误,请重新输入");
 				}
 			}
 		},

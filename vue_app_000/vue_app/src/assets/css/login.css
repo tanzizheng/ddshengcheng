@@ -69,12 +69,18 @@
 	top: 0.4rem;
 	opacity: 0;
 }
-
+.validations {
+	position: absolute;
+	z-index: 1;
+	right: 2rem;
+	top: 0.4rem;
+	opacity: 1;
+}
 .J_codeimg {
-	width: 85px;
-	height: 36px;
+	width: 90px;
+	height:30px;
 	padding: 3px;
-	z-index: 0;
+	z-index: 1;
 	color: #FFF;
 }
 

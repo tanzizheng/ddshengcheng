@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import log from "./components/xz/log.vue"
+// import Registration from "./components/xz/Registration.vue"
 //(1)登录组件
 // import Login from "./components/xz/Login.vue"
 // 商品列表
@@ -11,26 +12,26 @@ Vue.use(Router)
 
 export default new Router({
 	routes: [
-		// {
-		//   path: '/',
-		//   name: 'login',
-		//   component: login
-		// },
-
+		{
+		  path: '/',
+		  redirect:'/log/login'
+		},
 		// {path:'/',component:Login},
 		// { path: '/', component: Login },
 		{
-			path: '/',
+			path: '/log',
 			component: log,
-			// children: [{
-			// 		path: 'login',
-			// 		component: Login
-			// 	},
-				// {
-				// 	path: 'posts',
-				// 	component: UserPosts
-				// }
-			// ]
+			children: [
+				{
+					path: 'login',
+					// component:Login
+					 component: resolve=>(require(["./components/xz/Login.vue"],resolve))
+				},
+				{
+					path: 'reg',
+					component: resolve=>(require(["./components/xz/Registration.vue"],resolve))
+				}
+			]
 		},
 		// {path:'/Login',component:Login},
 		{
