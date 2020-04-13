@@ -7,8 +7,8 @@
 			</canvas>
 		</div>
 		<div class="reglink" @click="Swit_reg_log">
-			<p v-show="!show">没有账号？<span>注册</span></p>
-			<p v-show="show">已有账号？<span>登录</span></p>
+			<p v-show="!this.$store.state.show">没有账号？<span>注册</span></p>
+			<p v-show="this.$store.state.show">已有账号？<span>登录</span></p>
 		</div>
 	</div>
 </template>
@@ -21,7 +21,6 @@
 		// },
 		data() {
 			return {
-				show:false,
 				canvas: null,
 				context: null,
 				stars: [], //星星数组
@@ -72,13 +71,17 @@
 				height: window.innerHeight,
 			};
 		},
+		watch: {
+			
+		},
 		methods: {
 			// 切换登录隐藏
 			Swit_reg_log(){
-				this.show = !this.show
-				if(this.show == true){
+				// this.show = !this.show
+				this.$store.commit('set_show',!this.$store.state.show)
+				if (this.$store.state.show == true) {
 					this.$router.push(`/log/reg`)
-				}else{
+				} else {
 					this.$router.push(`/log/login`)
 				}
 			},
@@ -173,7 +176,6 @@
 
 			this.createStar(true);
 			this.drawFrame();
-
 		}
 	};
 </script>

@@ -136,7 +136,7 @@ server.get("/product", (req, res) => {
 		ps = 4;
 	}
 	//4:创建sql语句
-	var sql = "SELECT lid,lname,price,img_url";
+	var sql = "SELECT lid,lname,price,spec,img_url";
 	sql += " FROM xz_laptop";
 	sql += " LIMIT ?,?";
 	var offset = (pno - 1) * ps; //起始记录数 ?
@@ -182,7 +182,7 @@ server.get("/addcart", (req, res) => {
 	var lid = req.query.lid;
 	var price = req.query.price;
 	var lname = req.query.lname;
-	//console.log(lid+":"+price+":"+lname)
+	// console.log(lid+":"+price+":"+lname)
 	//res.send(lid+":"+price+":"+lname);
 	//4:创建查询sql:当前用户是否购买此商品
 	var sql = "SELECT id FROM xz_cart";
@@ -194,12 +194,13 @@ server.get("/addcart", (req, res) => {
 		//  没购买过此商品  添加
 		//  己购买过此商品  更新
 		if (result.length == 0) {
-			var sql = `INSERT INTO xz_cart VALUES(null,${lid},${price},1,'${lname}',${uid})`;
+			 var sql = `INSERT INTO xz_cart VALUES(null,${lid},'${lname}',${price},1,${uid})`;
+			
 		} else {
 			var sql = `UPDATE xz_cart SET count=count+1 WHERE uid=${uid} AND lid=${lid}`;
 		}
 		//7:执行sql获取返回结果
-		pool.query(sql, (err, result) => {
+		pool.query(sql,(err, result) => {
 			if (err) throw err;
 			//8:如果sql UPDATE INSERT DELETE
 			//判断执行成功 result.affectedRows 影响行数
@@ -230,7 +231,7 @@ server.get("/carts", (req, res) => {
 		return;
 	}
 	// 创建sql语句
-	var sql = "SELECT id,lname,price FROM xz_cart WHERE uid=?";
+	var sql = "SELECT * FROM xz_cart WHERE uid=?";
 	// 执行sql语句
 	pool.query(sql, [uid], (err, result) => {
 		if (err) throw err;

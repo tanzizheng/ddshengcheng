@@ -141,7 +141,8 @@
 								this.uname=''
 							  this.upwd=''
 								// 	//8: 成功 跳转
-								// this.$router.push({path:`/log/login`})
+								this.$store.commit('set_show',!this.$store.state.show)
+								this.$router.push({path:`/log/login`})
 							}else{
 									this.$messagebox("温馨提示", "注册失败");
 							}

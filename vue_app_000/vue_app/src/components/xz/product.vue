@@ -8,7 +8,10 @@
             <!-- 名称 -->
             <h5>{{item.lname}}</h5>
             <!-- 价格 -->
-            <div class="info">1258.998</div>
+            <div class="info">{{item.price}}</div>
+						<div>
+							{{item.spec}}
+						</div>
             <!-- 加入购物车 -->
             <!-- 添加自定义属性 -->
             <mt-button @click="addcart" :data-lid="item.lid"
@@ -39,8 +42,9 @@ export default {
             var lid=event.target.dataset.lid;
             var lname=event.target.dataset.lname;
             var price=event.target.dataset.price;
-            // console.log(lid+"|"+lname+"|"+price);
-            var url="addcart";//发送给服务器
+						// console.log('进一')
+      //       console.log(lid+"|"+lname+"|"+price);
+            var url="addcart";//发送给服务器w
             var obj={lid:lid,lname:lname,price:price};
             // 发送ajax请求
             this.axios.get(url,{params:obj}).then
@@ -51,7 +55,7 @@ export default {
                     this.$messagebox("消息","请登录")
                     .then(res=>{
                         //调转
-                        this.$router.push("/login");
+                        this.$router.push("/log/login");
                     });
                 }else if(res.data.code == -2){
                     this.$messagebox("消息","添加失败");
@@ -79,34 +83,5 @@ export default {
 }
 </script>
 <style scoped>
-    /* 最外层弹性布局 */
-.product-app{
-    display:flex;
-    flex-wrap: wrap;/*指定子元素换行*/
-    justify-content: space-between;/*两端对齐*/
-    padding: 4px;
-}
-/* 商品修饰 */
-.goods-item{
-    /* 因为一行只有两个商品 */
-    width:49%;
-    border: 1px solid #ccc;
-    border-radius: 5px;/*圆角*/
-    margin:2px 0;
-    padding: 2px;
-    box-sizing: border-box;/*重新计算元素宽度*/
-    display: flex;
-    flex-direction: column;/*商品内容按列排放*/
-    min-height: 249px;/*最小高度*/
-}
-/* 价格 */
-.goods-item .info{
-    color: red;
-    font-size: 19px;
-}
-/* 图片 */
-.product-app .goods-item img{
-    width: 200px;
-    height: 250px;
-}
+		@import url("../../assets/css/product.css");
 </style>

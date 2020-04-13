@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import Vuex from 'vuex'
 import store from './store'
 //1.1 完成引入所有组件
 import MintUI from "mint-ui" 
